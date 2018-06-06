@@ -1,16 +1,5 @@
 import chardet
 import json
-from pprint import pprint
-
-# Пошаговое описание действий
-# 1. Открыть в бинарном режиме, чтобы определить кодировку файла -- DONE
-# 1.1 Еше раз открыть файл с учетом кодировки для  json.load -- DONE
-# 2. Создать словарь, в котором будут накапливаться разбитые методом split строки из ключей
-#    dict["rss"]["channel"]["description"]   description и title
-#    Циклом for по dict["rss"]["channel"]["items"]["description"] и dict["rss"]["channel"]["items"]["title"]
-#    dict["rss"]["channel"]["category"] и dict["rss"]["channel"]["title"]
-# 3. Использовать код прошлой программы для определения топ 10 самых часто встречающихся
-#    в новостях слов длиннее 6 символов для каждого файла
 
 
 def get_encoding_type(folder, file_name):
@@ -86,12 +75,6 @@ def run():
     data_way = {'json': {'folder': 'json_files', 'files': ['newsafr.json', 'newscy.json', 'newsfr.json', 'newsit.json']},
                 'xml': {'folder': 'xml_files', 'files': ['newsafr.xml', 'newscy.xml', 'newsfr.xml', 'newsit.xml']}
                 }
-    # Словарь для отладки программы, позже удалить
-    # data_way = {
-    #     'json': {'folder': 'json_files', 'files': ['newsit.json']},
-    #     'xml': {'folder': 'xml_files', 'files': ['newsit.xml']}
-    #     }
-
     print('Определим 10 самых высокочастотных слов.')
     world_length = int(input('Укажите количество символов в слове: '))
     choice = input('Какой тип файла вы хотите проанализировать (json / xml):')
